@@ -17,6 +17,12 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.example.premisimulation.activity.LoginActivity;
+import com.example.premisimulation.util.SharedPrefManager;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MenuButton extends Activity {
 
      Button btn;
@@ -27,12 +33,34 @@ public class MenuButton extends Activity {
      View popupview;
      ImageButton ibtn;
 
+    @BindView(R.id.tvResultNama)
+    TextView tvResultNama;
+    @BindView(R.id.btnLogout)
+    Button btnLogout;
+
+    SharedPrefManager sharedPrefManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_button);
+
+        ButterKnife.bind(this);
+        sharedPrefManager = new SharedPrefManager(this);
+
+        tvResultNama.setText(sharedPrefManager.getSPNama());
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
+                startActivity(new Intent(MenuButton.this, LoginActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                finish();
+            }
+        });
+
         ibtn =(ImageButton) findViewById(R.id.btnastor);
         btn =(Button) findViewById(R.id.button2);
 
@@ -69,7 +97,6 @@ public class MenuButton extends Activity {
             }
             @Override
             public void onClick(View v){
-
 
                 txt.setText("Ästor adalah asuransi bla bla bla");
                 intentastor.setOnClickListener(new View.OnClickListener(){
