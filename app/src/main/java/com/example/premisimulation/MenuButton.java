@@ -35,13 +35,13 @@ public class MenuButton extends Activity {
         setContentView(R.layout.activity_menu_button);
         ibtn =(ImageButton) findViewById(R.id.btnastor);
         btn =(Button) findViewById(R.id.button2);
-        btn2 =(Button) findViewById(R.id.btn2);
+
         txt =(TextView) findViewById(R.id.deskripsi);
         intentastor =(Button) findViewById(R.id.lanjut);
         intentastor.setEnabled(false);
         popupview = LayoutInflater.from(this).inflate(R.layout.popup_astor, null);
 
-            btn.setOnClickListener(new View.OnClickListener(){
+            ibtn.setOnClickListener(new View.OnClickListener(){
 
                 {
                     intentastor.setEnabled(true);
@@ -62,17 +62,17 @@ public class MenuButton extends Activity {
             });
 
 
-        btn2.setOnClickListener(new View.OnClickListener(){
+        btn.setOnClickListener(new View.OnClickListener(){
 
             {
-                intentastor2.setEnabled(true);
+                intentastor.setEnabled(true);
             }
             @Override
             public void onClick(View v){
 
 
                 txt.setText("Ästor adalah asuransi bla bla bla");
-                intentastor2.setOnClickListener(new View.OnClickListener(){
+                intentastor.setOnClickListener(new View.OnClickListener(){
                     public void onClick(View v){
 
                         Intent i = new Intent(MenuButton.this,SplashScreen.class);
