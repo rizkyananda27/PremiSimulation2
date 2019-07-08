@@ -41,7 +41,7 @@ public class MenuButton extends Activity {
         intentastor.setEnabled(false);
         popupview = LayoutInflater.from(this).inflate(R.layout.popup_astor, null);
 
-            btn.setOnClickListener(new View.OnClickListener(){
+            ibtn.setOnClickListener(new View.OnClickListener(){
 
                 {
                     intentastor.setEnabled(true);
@@ -62,10 +62,10 @@ public class MenuButton extends Activity {
             });
 
 
-        btn2.setOnClickListener(new View.OnClickListener(){
+        btn.setOnClickListener(new View.OnClickListener(){
 
             {
-                intentastor2.setEnabled(true);
+                intentastor.setEnabled(true);
             }
             @Override
             public void onClick(View v){
